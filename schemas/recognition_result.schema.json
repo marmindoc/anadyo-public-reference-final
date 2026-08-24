@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecognitionResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recognition_id", "trace_id", "state", "relationship_profile_id", "relationship_profile_version", "rule_id", "rule_version", "relationship_type", "selectors", "source_fact_refs", "source_record_refs", "observed_values", "comparison", "interpretation"],
+  "properties": {
+    "recognition_id": {"type": "string", "pattern": "^rr-[a-f0-9]{16}$"},
+    "trace_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["BASIS_CORRESPONDS", "CHANGED_CORRESPONDENCE"]},
+    "relationship_profile_id": {"type": "string", "minLength": 1},
+    "relationship_profile_version": {"type": "string", "minLength": 1},
+    "rule_id": {"type": "string", "minLength": 1},
+    "rule_version": {"type": "string", "minLength": 1},
+    "relationship_type": {"type": "string", "minLength": 1},
+    "selectors": {
+      "type": "object", "additionalProperties": false, "required": ["current", "support"],
+      "properties": {"current": {"$ref": "#/$defs/selector"}, "support": {"$ref": "#/$defs/selector"}}
+    },
+    "source_fact_refs": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string", "minLength": 1}},
+    "source_record_refs": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/sourceRecordRef"}},
+    "observed_values": {
+      "type": "object", "additionalProperties": false, "required": ["current", "support"],
+      "properties": {"current": {}, "support": {}}
+    },
+    "comparison": {
+      "type": "object", "additionalProperties": false, "required": ["operator", "satisfied"],
+      "properties": {"operator": {"const": "equals"}, "satisfied": {"type": "boolean"}}
+    },
+    "interpretation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observed", "established", "not_established", "unresolved_or_not_observed"],
+      "properties": {
+        "observed": {"$ref": "#/$defs/nonEmptyStringList"},
+        "established": {"$ref": "#/$defs/nonEmptyStringList"},
+        "not_established": {"$ref": "#/$defs/nonEmptyStringList"},
+        "unresolved_or_not_observed": {"$ref": "#/$defs/nonEmptyStringList"}
+      }
+    }
+  },
+  "$defs": {
+    "selector": {
+      "type": "object", "additionalProperties": false, "required": ["entity_id", "entity_type", "attribute"],
+      "properties": {"entity_id": {"type": "string", "minLength": 1}, "entity_type": {"type": "string", "minLength": 1}, "attribute": {"type": "string", "minLength": 1}}
+    },
+    "sourceRecordRef": {
+      "type": "object", "additionalProperties": false, "required": ["side", "source_id", "source_record_id"],
+      "properties": {"side": {"enum": ["current", "support"]}, "source_id": {"type": "string", "minLength": 1}, "source_record_id": {"type": "string", "minLength": 1}}
+    },
+    "nonEmptyStringList": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  }
+}

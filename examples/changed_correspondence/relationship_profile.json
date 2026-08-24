@@ -1,0 +1,22 @@
+{
+  "profile_id": "public-reference-owner-correspondence",
+  "profile_version": "public-reference-v1",
+  "rules": [
+    {
+      "rule_id": "owner-support-correspondence",
+      "rule_version": "public-reference-v1",
+      "relationship_type": "current_owner_corresponds_to_support_owner",
+      "current_selector": {
+        "entity_id": "service-a",
+        "entity_type": "synthetic_current_observation",
+        "attribute": "owner"
+      },
+      "support_selector": {
+        "entity_id": "service-a",
+        "entity_type": "represented_supporting_record",
+        "attribute": "owner"
+      },
+      "comparison": "equals"
+    }
+  ]
+}

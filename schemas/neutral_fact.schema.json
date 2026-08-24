@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NeutralFact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fact_id",
+    "trace_id",
+    "entity_id",
+    "entity_type",
+    "attribute",
+    "observed_value",
+    "timestamp",
+    "source_id",
+    "source_record_id",
+    "field_classification"
+  ],
+  "properties": {
+    "fact_id": {"type": "string", "minLength": 1},
+    "trace_id": {"type": "string", "minLength": 1},
+    "entity_id": {"type": "string", "minLength": 1},
+    "entity_type": {"type": "string", "minLength": 1},
+    "attribute": {"type": "string", "minLength": 1},
+    "observed_value": {},
+    "timestamp": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "source_record_id": {"type": "string", "minLength": 1},
+    "field_classification": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": ["SOURCE_FACT", "SOURCE_ASSERTION", "STRUCTURAL_METADATA"]
+      }
+    }
+  }
+}
