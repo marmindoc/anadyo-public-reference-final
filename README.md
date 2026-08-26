@@ -12,6 +12,10 @@ Current synthetic observation
 
 This repository is a deliberately minimal technical reference. It shows how supplied synthetic facts and an explicit rule can produce bounded correspondence recognition with traceable informational output.
 
+## Intended use
+
+This repository is a fixed, inspectable public release snapshot of the documented reference mechanism. The packaged examples, schemas, and tests define the supported inspection surface for this release. Modification, extension, and behavior under inputs outside that packaged surface are not established by this release.
+
 ## Why the relationship matters
 
 Relevant observations, supporting records, assumptions, references, and review history may exist while their relationship remains fragmented or implicit. Making one configured relationship explicit lets an external reviewer see what was compared, what the comparison establishes, and what remains unresolved.
@@ -111,15 +115,17 @@ python -m unittest discover -s tests
 
 ## Tests and schemas
 
-Tests cover both states, deterministic results, the minimal trace, bounded interpretation, reference integrity, absence of generic confidence, schema conformance, and generated-output authority boundaries. JSON Schemas describe NeutralFact, RecognitionResult, and public information output.
+Tests cover both states, deterministic results, the minimal trace, bounded interpretation, reference integrity, absence of generic confidence, schema conformance, and generated-output authority boundaries. They characterize the packaged inspection surface; passing them does not establish behavior outside that surface or constitute operational validation. JSON Schemas describe NeutralFact, RecognitionResult, and public information output.
 
 See `validation/PUBLIC_VALIDATION_SUMMARY.md` for the bounded validation scope.
 
-## Relationship to other ANADYO artifacts
+## Relationship to the Mini Visual MVP
 
-- **Public repository:** minimal inspectable technical reference for a configured evidence/support relationship, deterministic correspondence recognition, traceability, and bounded informational output.
-- **Mini visual MVP:** richer synthetic runtime-review demonstrator with additional configured correspondence conditions and visual inspection.
-- **Private evaluation work:** separate work not represented as validation evidence or results in this repository.
+The Mini Visual MVP and this Public Technical Reference expose the same bounded recognition principle at different scopes. The Mini Visual MVP is the richer browser-facing synthetic demonstration, with seven scenarios, multiple recognition states, and guided visual behavior. This repository is deliberately narrower: it supplies a smaller correspondence mechanism, deterministic examples, schemas, tests, and explicit limitations.
+
+Across both artifacts, correspondence recognition remains separate from qualification, disposition, and execution authority. This repository does not implement everything shown in the Mini Visual MVP, and the richer visual must not be read as evidence that those additional behaviors are implemented here.
+
+Private evaluation work is separate and is not represented as validation evidence or results in this repository.
 
 ## Rights and reuse
 
