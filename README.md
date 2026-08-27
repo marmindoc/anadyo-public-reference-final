@@ -127,6 +127,12 @@ Across both artifacts, correspondence recognition remains separate from qualific
 
 Private evaluation work is separate and is not represented as validation evidence or results in this repository.
 
+## Acknowledgement
+
+With gratitude to Robert “Huck” Huckaby for a private pre-reveal peer assessment that pressure-tested how the Mini Visual MVP and Public Technical Reference might be interpreted in practice, particularly where precision could be granted authority beyond what the evidence establishes.
+
+The final design decisions, claims, and responsibility remain mine.
+
 ## Rights and reuse
 
 This repository is publicly visible for technical review and reference only. It is not open source, and no open-source or other software license is granted. No permission is granted to copy, modify, redistribute, use commercially, or create derivative works unless explicitly authorized by the rights holder.
